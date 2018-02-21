@@ -1,0 +1,34 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Hangman</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+</head>
+
+<body>
+    <div id="difficultyLvl"></div>
+    <div id="gameScreen">
+        <canvas id="hangman" width="200" height="100" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <div id="textGuessBox"></div>
+        <div id="guessedLetters">Your Guesses: </div>
+        <div id="textGuessingBox">
+            <form id="guessForm">Your Guess:
+                <input type="text" id="guessedLetter" pattern="[a-z]{1}" title="One English letter, lower case only">
+                <input type="submit">
+            </form>
+        </div>
+        <button id='restartBtn'></button>
+    </div>
+
+    <script type="text/javascript" src="game.js" async></script>
+</body>
+</html>

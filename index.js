@@ -1,27 +1,12 @@
 const difficultyForm = document.getElementById("difficultyForm")
-const hangman = document.getElementById("hangman")
-const gameScreen = document.getElementById("gameScreen")
-const textGuessBox = document.getElementById("textGuessBox")
-const textGuessingBox = document.getElementById("textGuessingBox")
 const startBtn = document.getElementById("startBtn")
+const difficultyDropdown = document.getElementById("difficultyDropdown")
 
+startBtn.addEventListener("click", function(event){
 
-function getRandomWord(difficulty){
-    return new Promise( function(resolve, reject){
-        
-        var requestString = "https://it3049c-hangman-service.herokuapp.com/?difficulty=" + difficulty
+    event.preventDefault()    
 
-        const req = new XMLHttpRequest()
+    sessionStorage.setItem("difficulty", difficultyDropdown.value)
 
-        req.onreadystatechange = function() {
-            if(req.readyState !== req.DONE) {return}
-
-            const res = JSON.parse(req.responseText)
-
-            resolve(res.word)
-        }
-
-        req.open("GET", requestString)
-        req.send()
-    })
-}
+    window.location = "game.html"
+})
