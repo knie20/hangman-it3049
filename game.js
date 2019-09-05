@@ -5,7 +5,7 @@ const textGuessingBox = document.getElementById("textGuessingBox")
 const guessForm = document.getElementById("guessForm")
 const restartBtn = document.getElementById("restartBtn")
 const difficultyLvl = document.getElementById("difficultyLvl")
-const guessedLettersDiv = document.getElementById("guessedLetters")
+const guessedLettersDiv = document.getElementById("guessedLetters") 
 
 difficultyLvl.innerHTML = sessionStorage.getItem("difficulty")
 
