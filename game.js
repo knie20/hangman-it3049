@@ -1,13 +1,11 @@
 const hangman = document.getElementById("hangman")
 const gameScreen = document.getElementById("gameScreen")
 const textGuessBox = document.getElementById("textGuessBox")
-const textGuessingBox = document.getElementById("textGuessingBox")
-const guessForm = document.getElementById("guessForm")
 const restartBtn = document.getElementById("restartBtn")
 const difficultyLvl = document.getElementById("difficultyLvl")
 const guessedLettersDiv = document.getElementById("guessedLetters") 
 
-difficultyLvl.innerHTML = sessionStorage.getItem("difficulty")
+difficultyLvl.innerHTML = "Current Difficulty: " + sessionStorage.getItem("difficulty")
 
 let ctx = hangman.getContext('2d')
 
@@ -59,7 +57,6 @@ class HangmanGame {
 
         if(!this.lettersGuessed.includes(char)){
             this.lettersGuessed += char
-            guessedLettersDiv.innerHTML = "Your Guesses:" + this.lettersGuessed
         }else{
             alert("this letter has already been guessed")
             return
@@ -155,15 +152,6 @@ class HangmanGame {
         }
     }
 }
-
-guessForm.addEventListener("submit", function(event){
-
-    event.preventDefault()
-
-    game.guess(document.getElementById("guessedLetter").value)
-
-    document.getElementById("guessedLetter").value = ''
-})
 
 restartBtn.addEventListener("click", function(event){
     window.location = "index.html"
