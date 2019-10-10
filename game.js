@@ -15,7 +15,7 @@ let ctx = hangman.getContext('2d')
 async function getRandomWord(difficulty){
     return new Promise( function(resolve, reject){
         
-        var requestString = "https://it3049c-hangman-service.herokuapp.com/?difficulty=" + difficulty
+        var requestString = " https://hangman-api.lively.software/?difficulty=" + difficulty
 
         const req = new XMLHttpRequest()
 
@@ -87,6 +87,8 @@ class HangmanGame {
             this.drawMan(this.hangmanLife)
             this.gameLost()
         }
+
+        return guessCorrect
     }
 
     gameLost(){
@@ -166,6 +168,30 @@ guessForm.addEventListener("submit", function(event){
 restartBtn.addEventListener("click", function(event){
     window.location = "index.html"
 })
+
+for (let i = 0; i < 26; i++) {
+    let letter = (i+10).toString(36);
+
+    if(i === 8 || i === 17) {
+        $('#letters').append("<br/>")
+    }
+
+    let btn = $(`<button id="${letter}">${letter}</button>`)
+    $('#letters').append(btn)
+}
+
+for (let i = 0; i < 26; i++) {
+    let letter = (i+10).toString(36);
+    document.getElementById(letter).addEventListener("click", (e) => {
+        let correct = game.guess(letter)
+
+        if(correct) {
+            e.target.style.color = 'green'
+        }
+
+        e.target.disabled = true
+    })
+}
 
 let game = new HangmanGame()
 
